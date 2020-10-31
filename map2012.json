@@ -3,6 +3,7 @@
   "width": 1000,
   "height": 400,
   "projection": {"type": "equirectangular"},
+  "title": "Country Population of 2012",
   "layer": [
     {
       "data": {
@@ -80,7 +81,7 @@
         "tooltip": [
           {"field": "properties.admin", "type": "nominal","title": "Country Name"},
           {"field": "properties.adm0_a3", "type": "nominal", "title":"Country Code"},
-          {"field": "2012", "type": "quantitative", "format": ","}
+          {"field": "2012", "type": "quantitative","title":"Population", "format": ","}
         ]
       }
     }
