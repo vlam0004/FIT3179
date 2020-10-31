@@ -33,7 +33,7 @@
       "projection": {"type": "equirectangular"},
       "encoding": {
         "color": {
-          "field": "1960",
+          "field": "1960","title":"Population",
           "type": "quantitative",
           "scale": {"scheme": "redpurple"}
         },
