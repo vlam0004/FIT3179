@@ -38,8 +38,55 @@
           "scale": {"scheme": "redpurple"}
         },
         "tooltip": [
-          {"field": "Country Name", "type": "nominal"},
-          {"field": "Country Code", "type": "nominal"},
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 1000,
+  "height": 400,
+  "projection": {"type": "equirectangular"},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vlam0004/FIT3179/main/world.json",
+        "format": {"type": "topojson", "feature": "world"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vlam0004/FIT3179/main/world.json",
+        "format": {"type": "topojson", "feature": "world"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.admin",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/vlam0004/FIT3179/main/Country-Population.csv",
+              "format": {"type": "csv"}
+            },
+            "key": "Country Name",
+            "fields": ["2012"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape"},
+      "projection": {"type": "equirectangular"},
+      "encoding": {
+        "color": {
+          "field": "2012",
+          "type": "quantitative",
+          "scale": {"scheme": "bluegreen"}
+        },
+        "tooltip": [
+          {"field": "properties.admin", "type": "nominal","title": "Country Name"},
+          {"field": "properties.adm0_a3", "type": "nominal", "title":"Country Code"},
+          {"field": "2012", "type": "quantitative", "format": ","}
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
           {"field": "1960", "type": "quantitative", "format": ","}
         ]
       }
