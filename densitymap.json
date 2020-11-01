@@ -42,7 +42,7 @@
           "type": "quantitative",
           "scale":{"type": "threshold",
           "domain":[25,50,75,100],
-          "scheme":"bluegreen"}
+          "scheme":"purpleblue"}
           },
               "tooltip": [
               {"field": "properties.admin", "type": "nominal", "title":"Country"},
