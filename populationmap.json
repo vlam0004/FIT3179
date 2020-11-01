@@ -40,7 +40,9 @@
         "color": {
           "field": "Population", "title":"Population",
           "type": "quantitative",
-          "scale":{"scheme":"bluegreen"}
+          "scale":{"type": "log",
+          "domain":[1000000,2000000,3000000,4000000,500000000,600000,700000,8000000,9000000,10000000,100000000],
+          "scheme":"redpurple"}
           },
               "tooltip": [
               {"field": "properties.admin", "type": "nominal", "title":"Country"},
