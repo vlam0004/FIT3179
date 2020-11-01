@@ -1,0 +1,108 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+ "width": 500,
+ "height": 500,
+ "title": "Top 10 Highest Population Countries",
+ "data": {
+ "url": "https://raw.githubusercontent.com/vlam0004/FIT3179/main/population_by_country_2020.csv"
+ },
+  "params": [
+ {
+ "name": "country_selection",
+ "bind": {
+ "input": "select",
+ "options": [
+ null,
+ "China",
+ "India",
+ "United States",
+ "Indonesia",
+ "Pakistan",
+ "Brazil",
+ "Nigeria",
+ "Bangladesh",
+ "Russia"
+ ],
+ "labels":[
+  "Show All",
+ "China",
+ "India",
+ "United States",
+ "Indonesia",
+ "Pakistan",
+ "Brazil",
+ "Nigeria",
+ "Bangladesh",
+ "Russia"
+ ],
+ "name": "Country Selection: "
+ }
+ }
+ ],
+"transform": [
+  {"filter": "country_selection == null || datum.Country == country_selection"}
+ ],
+ "selection": {
+ "country_highlight": {
+ "type": "single",
+ "fields": ["Country"],
+ "bind": "legend"
+ }
+ },
+ "mark": "circle",
+ "encoding": {
+ "x": {
+ "field": "LandArea",
+ "type": "quantitative",
+ "title": "Land Area (Km²)",
+ "axis": {"tickCount": 7},
+ "scale": {"domain": [1, 20000000]}
+ },
+ "y": {
+ "field": "NetChange",
+ "type": "quantitative",
+ "title":"Net Population Change",
+  "axis": {"tickCount": 7},
+ "scale":{"domain":[1,20000000],"clamp":true}
+ },
+
+ "color": {
+ "field": "Country",
+ "type": "nominal",
+ "title":"Country",
+  "scale":{"domain": [
+ "China",
+ "India",
+ "United States",
+ "Indonesia",
+ "Pakistan",
+ "Brazil",
+ "Nigeria",
+ "Bangladesh",
+ "Russia"
+ ]
+  }
+ },
+ "size": {
+ "field": "Population",
+ "type": "quantitative",
+ "title":"Population",
+ "scale": {
+ "type": "threshold",
+ "domain": [100000000,250000000,500000000,750000000,1000000000],
+ "range": [25, 125, 250, 500, 1000, 2000]
+ },
+ "legend": {"format": ".1s"}
+ },
+"tooltip": [
+ {"field": "Country", "type": "nominal"},
+ {"field": "Population", "type": "quantitative", "format": ","},
+ {"field": "LandArea", "type": "quantitative", "format": ",","title":"Land Area (Km²)"},
+ {"field": "Density", "type": "quantitative", "format": ",","title":"Density (P/Km²)"},
+ {"field": "NetChange", "type": "quantitative", "format": ",","title":"Net Population Change"},
+{"field": "Migrants", "type": "quantitative", "format": ",","title":"Migrants (Net)"},
+{"field": "MedAge", "type": "quantitative", "format": ",","title":"Median Age"},
+{"field": "Fert", "type": "quantitative", "format": ",","title":"Fertality Rate"}
+ ]
+ }
+}
