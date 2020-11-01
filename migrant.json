@@ -1,0 +1,56 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": {
+    "text": "Migrating Rate per Year",
+    "orient": "bottom",
+    "fontSize":20
+  },
+  "width": 800,
+  "height": 400,
+  "projection": {"type": "equirectangular"},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vlam0004/FIT3179/main/world.json",
+        "format": {"type": "topojson", "feature": "world"}
+      },
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/vlam0004/FIT3179/main/world.json",
+        "format": {"type": "topojson", "feature": "world"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.admin",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/vlam0004/FIT3179/main/population_by_country_2020.csv",
+              "format": {"type": "csv"}
+            },
+            "key": "Country",
+            "fields": ["Migrants"]
+          }
+        }
+      ],
+      "mark": "geoshape",
+      "projection": {"type": "equirectangular"},
+      "encoding": {
+        "color": {
+          "field": "Migrants", "title":"Migrants (Net)",
+          "type": "quantitative",
+          "scale":{
+          "domain":[-500000,200000],
+          "range":["#ff8a8a","#d6ff8e"]}
+          },
+              "tooltip": [
+              {"field": "properties.admin", "type": "nominal", "title":"Country"},
+              {"field": "properties.adm0_a3", "type": "nominal","title":"Country Code"},
+              {"field": "Migrants", "type": "quantitative", "format": ",","title":"Migrants (Net)"}
+              ]
+          }
+    }
+  ],
+  "config": {}
+}
