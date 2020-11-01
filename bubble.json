@@ -2,7 +2,11 @@
  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
  "width": 500,
  "height": 500,
- "title": "Top 10 Highest Population Countries",
+  "title": {
+    "text": "Top 10 Highest Population Countries",
+    "orient": "top",
+    "fontSize":20
+  },
  "data": {
  "url": "https://raw.githubusercontent.com/vlam0004/FIT3179/main/population_by_country_2020.csv"
  },
