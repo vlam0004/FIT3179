@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "title": {
-    "text": "Population 2020",
+    "text": "Population Map",
     "orient": "top",
     "fontSize":20
   },
