@@ -1,0 +1,13 @@
+{
+  "width": 2000, "height": 500,
+  "data": {"url": "https://raw.githubusercontent.com/vlam0004/FIT3179/main/population_by_country_2020.csv"},
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Country (or dependency)"
+    },
+    "y": {
+      "aggregate": "sum", "field": "Population (2020)"
+    }
+  }
+}
