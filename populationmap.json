@@ -47,6 +47,7 @@
               "tooltip": [
               {"field": "properties.admin", "type": "nominal", "title":"Country"},
               {"field": "properties.adm0_a3", "type": "nominal","title":"Country Code"},
+              {"field": "properties.continent", "type": "nominal", "title":"Continent"},
               {"field": "Population", "type": "quantitative", "format": ",","title":"Population"}
               ]
           }
