@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "width": 400, "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/vlam0004/FIT3179/main/population_by_country_2020.csv"
+  },
+  "transform": [{"filter": "datum.Country == \"China\"||datum.Country == \"India\"||datum.Country == \"United States\"||datum.Country == \"Indonesia\"||datum.Country == \"Pakistan\"||datum.Country == \"Brazil\"||datum.Country == \"Nigeria\"||datum.Country == \"Bangladesh\"||datum.Country == \"Russia\""}
+  ],
+  "width": {"step": 60},
+  "encoding": {
+    "x": {
+      "field": "Country",
+      "axis": {"title": null,"labelAngle":0}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"opacity": 0.4, "type": "bar", "color": "#59eea6"},
+      "encoding": {
+        "y": {
+          "field": "LandArea",
+          "scale": {"type": "log", "domain":[1,100000000]},
+          "title": "Land Area (Km²)",
+          "axis": {"titleColor": "#59eea6","tickCount":7}
+        },
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "Population", "type": "quantitative", "format": ","},
+          {"field": "LandArea", "type": "quantitative", "format": ",", "title": "Land Area (Km²)"},
+          {"field": "Density", "type": "quantitative", "format": ",","title":"Population Density"},
+          {"field": "NetChange", "type": "quantitative", "format": ",", "title":"Net Change per Year"}
+          ]
+      }
+    },
+    {
+      "mark": {"stroke": "#45c3da", "type": "line", "interpolate": "monotone"},
+      "encoding": {
+        "y": {
+          "field": "Population",
+          "title": "Population",
+          "scale":{"type": "log","domain":[10000000,10000000000]},
+          "axis": {"titleColor":"#45c3da","tickCount":4}
+        }
+      }
+    }
+  ],
+  "resolve": {"scale": {"y": "independent"}}
+}
